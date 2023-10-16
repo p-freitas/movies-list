@@ -196,7 +196,7 @@ export default function Main() {
 
   const onDeleteSeries = (item) => {
     axios
-      .delete(`${API_URL}/series/${item.id}`)
+      .delete(`${API_URL}/series/${item._id}`)
       .then(function (response) {
         getSeries();
         localStorage.setItem("lastUpdated", currentTime);
@@ -208,7 +208,7 @@ export default function Main() {
 
   const onDeleteRecomendation = (item) => {
     axios
-      .delete(`${API_URL}/recomendations/${item.id}`)
+      .delete(`${API_URL}/recomendations/${item._id}`)
       .then(function (response) {
         getRecomendation();
         localStorage.setItem("lastUpdated", currentTime);
