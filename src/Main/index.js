@@ -60,7 +60,7 @@ export default function Main() {
             return 1;
           }
         });
-        setData([...data, orderedResponse]);
+        setData([orderedResponse]);
         setLoading(false);
       })
       .catch(function (error) {
@@ -85,7 +85,7 @@ export default function Main() {
             return 1;
           }
         });
-        setDataSeries([...data, orderedResponse]);
+        setDataSeries([orderedResponse]);
         setLoadingSeries(false);
       })
       .catch(function (error) {
@@ -98,7 +98,7 @@ export default function Main() {
     axios
       .get(`${API_URL}/recomendations`)
       .then(function (response) {
-        setDataRecomendation([...data, response.data]);
+        setDataRecomendation([response.data]);
         setLoadingRecomendations(false);
       })
       .catch(function (error) {
@@ -184,7 +184,7 @@ export default function Main() {
 
   const onDelete = (item) => {
     axios
-      .delete(`${API_URL}/movies/${item.id}`)
+      .delete(`${API_URL}/movies/${item._id}`)
       .then(function (response) {
         getMovies();
         localStorage.setItem("lastUpdated", currentTime);
@@ -242,6 +242,9 @@ export default function Main() {
   const filteredSeriesList = dataSeries[0]?.filter((item) =>
     item?.name?.toLowerCase()?.includes(seriesInputValue)
   );
+
+  console.log('data::::', data);
+  console.log('filteredMoviesList::::', filteredMoviesList);
 
   return (
     <div className="container-all">
